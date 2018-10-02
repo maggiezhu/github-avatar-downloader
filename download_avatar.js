@@ -10,6 +10,7 @@ console.log('Welcome to the GitHub Avatar Downloader!');
 function getRepoContributors(repoOwner, repoName, callback){
   if(!repoOwner||!repoName){
     console.log('Invalid Input/\n Please input repoOwner repoName');
+    return;
   }
   var options = {
     url: "https://api.github.com/repos/" + repoOwner + "/" + repoName + "/contributors",
