@@ -2,9 +2,15 @@ var request = require('request');
 var secret = require('./secret.js');
 var fs = require('fs');
 
+var owner = process.argv[2];
+var repo = process.argv[3];
+
 console.log('Welcome to the GitHub Avatar Downloader!');
 
 function getRepoContributors(repoOwner, repoName, callback){
+  if(!repoOwner||!repoName){
+    console.log('Invalid Input/\n Please input repoOwner repoName');
+  }
   var options = {
     url: "https://api.github.com/repos/" + repoOwner + "/" + repoName + "/contributors",
     headers: {
@@ -39,4 +45,4 @@ function downloadImageByURL(url,path){
 
 }
 
-getRepoContributors("jquery", "jquery", callback);
+getRepoContributors(owner, repo, callback);
